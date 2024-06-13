@@ -139,6 +139,7 @@ theorem plane_tree_to_full_binary_tree_inverse :
       rw [←plane_tree_to_full_binary_tree_inverse, plane_tree_to_list_plane_tree]
 
 /-- 6th LARGE TASK:
+Prove that Binom(2n, n) is divisible by n + 1 --/
 
 theorem binom_divisible_by_n_plus_1 (n : ℕ) : ((Nat.choose (2 * n) n)) % (n + 1) = 0 := by
   have h : (Nat.choose (2 * n) n) =  1/n * (Nat.choose (2*n) (n + 1)) * (n+1) := by
