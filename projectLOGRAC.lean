@@ -137,3 +137,17 @@ theorem plane_tree_to_full_binary_tree_inverse :
       apply And.intro
       rw [←plane_tree_to_full_binary_tree_inverse]
       rw [←plane_tree_to_full_binary_tree_inverse, plane_tree_to_list_plane_tree]
+
+/-- 6th LARGE TASK:
+
+theorem binom_divisible_by_n_plus_1 (n : ℕ) : ((Nat.choose (2 * n) n)) % (n + 1) = 0 := by
+  have h : (Nat.choose (2 * n) n) =  1/n * (Nat.choose (2*n) (n + 1)) * (n+1) := by
+    have h1 : (2 * n - n) = n := by
+      rw [two_mul, Nat.add_sub_assoc, Nat.sub_self, add_zero]
+      rfl
+    have h2 : (2 * n - (n + 1)) =  (n - 1) := by
+      rw [Nat.two_mul, Nat.sub_add_eq, Nat.add_sub_assoc, Nat.sub_self, add_zero]
+      rfl
+    rw [Nat.choose_eq_factorial_div_factorial, Nat.choose_eq_factorial_div_factorial, h1, h2]
+    sorry
+  rw [h, Nat.mul_mod, Nat.mod_self, mul_zero, Nat.zero_mod]
